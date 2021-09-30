@@ -83,9 +83,9 @@
     </body>
     <script>
         function showSentenceWord(sentenceId) {
-            if (sentenceId) {
+            if (parseInt(sentenceId)) {
                 $('#sentence-by-word').html('')
-                $('#play-button').html('')
+                $('#play-button').remove()
                 $.ajax({
                     url: "/getSentenceWordById",
                     data: {sentenceId: sentenceId},
@@ -98,6 +98,9 @@
                     let playButton = '<div id="play-button"><button onclick="highlightWords()">play</button></div>'
                     $('#sentences-div').append(playButton)
                 })
+            } else {
+                $('#play-button').remove()
+                $('#sentence-by-word').html('')
             }
         }
 
